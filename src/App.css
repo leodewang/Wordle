@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #121213;
+  color: white;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+header {
+  border-bottom: 1px solid #3a3a3c;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.start-screen input {
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #3a3a3c;
+  background-color: #121213;
+  color: white;
+  border-radius: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 200px;
+}
+
+.start-screen button, .game-over button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #538d4e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.start-screen button:hover, .game-over button:hover {
+  background-color: #6aaa64;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 5px;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #3a3a3c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.tile.correct {
+  background-color: #6aaa64;
+  border-color: #6aaa64;
+}
+
+.tile.present {
+  background-color: #c9b458;
+  border-color: #c9b458;
+}
+
+.tile.absent {
+  background-color: #787c7e;
+  border-color: #787c7e;
+}
+
+.keyboard {
+  width: 100%;
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.keyboard-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.key {
+  height: 58px;
+  min-width: 40px;
+  padding: 0 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #818384;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.key:hover {
+  opacity: 0.9;
+}
+
+.key.special-key {
+  min-width: 65px;
+  font-size: 12px;
+}
+
+.key.correct {
+  background-color: #6aaa64;
+}
+
+.key.present {
+  background-color: #c9b458;
+}
+
+.key.absent {
+  background-color: #3a3a3c;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  z-index: 10;
+}
+
+.game-over h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.game-over p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.word-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.word-button {
+  padding: 10px 15px;
+  background-color: #538d4e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.word-button:hover {
+  background-color: #6aaa64;
+}
+
+.word-button.small {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.custom-word-section {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.custom-word-section h3 {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #3a3a3c;
+  border-radius: 4px;
+}
+
+.error-message {
+  color: #ff5252;
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.start-screen h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.tile.flip {
+  animation: flip 0.6s ease;
+  animation-fill-mode: forwards;
+}
+
+.tile.flip-0 {
+  animation-delay: 0ms;
+}
+
+.tile.flip-1 {
+  animation-delay: 300ms;
+}
+
+.tile.flip-2 {
+  animation-delay: 600ms;
+}
+
+.tile.flip-3 {
+  animation-delay: 900ms;
+}
+
+.tile.flip-4 {
+  animation-delay: 1200ms;
+}
+
+/* Remove the previous rule that was causing issues */ 
